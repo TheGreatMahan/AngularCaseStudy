@@ -22,4 +22,15 @@ public class VendorController {
         Vendor updatedVendor = vendorRepository.save(vendor);
         return new ResponseEntity<Vendor>(updatedVendor, HttpStatus.OK);
     }
+
+    @PostMapping("/api/vendors")
+    public ResponseEntity<Vendor> addOne(@RequestBody Vendor vendor) {
+        Vendor newVendor = vendorRepository.save(vendor);
+        return new ResponseEntity<Vendor>(newVendor, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/api/vendors/{id}")
+    public ResponseEntity<Integer> deleteOne(@PathVariable long id) {
+        return new ResponseEntity<Integer>(vendorRepository.deleteOne(id), HttpStatus.OK);
+    }
 }
