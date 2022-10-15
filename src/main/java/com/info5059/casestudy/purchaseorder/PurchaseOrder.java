@@ -21,7 +21,7 @@ public class PurchaseOrder {
     // PurchaseOrder private members
     @Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
     private Long vendorid;
     private BigDecimal amount;
     @JsonFormat(pattern = "yyyy-MM-dd")
