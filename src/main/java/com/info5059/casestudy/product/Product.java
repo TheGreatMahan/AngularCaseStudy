@@ -12,7 +12,6 @@ import javax.persistence.Lob;
 @Data
 @RequiredArgsConstructor
 public class Product {
-
     @Id
     private String id;
     private int vendorid; //FK
@@ -26,7 +25,7 @@ public class Product {
 
     @Basic(optional = true)
     @Lob
-    private String qrcode;
+    private byte[] qrcode;
 
     @Basic(optional = true)
     @Lob

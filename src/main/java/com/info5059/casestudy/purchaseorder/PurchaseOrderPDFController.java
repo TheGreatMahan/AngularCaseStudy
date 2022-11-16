@@ -40,7 +40,7 @@ public class PurchaseOrderPDFController {
 
                         // ByteArrayInputStream bis = Generator.generateReport();
                         HttpHeaders headers = new HttpHeaders();
-                        headers.add("Content-Disposition", "inline; filename=poBDF.pdf");
+                        headers.add("Content-Disposition", "inline; filename=PurchaseOrderPDF.pdf");
                         // dump stream to browser
                         return ResponseEntity
                                         .ok()
