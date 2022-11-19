@@ -13,3 +13,5 @@ INSERT INTO Product (Id,VendorId,Name,CostPrice,MSRP,ROP,EOQ,QOH,QOO,QRCode,QRCo
 INSERT INTO Product (Id,VendorId,Name,CostPrice,MSRP,ROP,EOQ,QOH,QOO,QRCode,QRCodeTxt)VALUES ('1x32',4,'iPhone 13',249.99,999.99,1,20,40,0,'','');
 INSERT INTO Product (Id,VendorId,Name,CostPrice,MSRP,ROP,EOQ,QOH,QOO,QRCode,QRCodeTxt)VALUES ('1x33',4,'iPhone 14',249.99,1199.99,1,20,40,0,'','');
 INSERT INTO Product (Id,VendorId,Name,CostPrice,MSRP,ROP,EOQ,QOH,QOO,QRCode,QRCodeTxt)VALUES ('1x34',4,'iPhone 14 Pro Max',249.99,099.99,1,20,40,0,'','');
+INSERT INTO Product (Id,VendorId,Name,CostPrice,MSRP,ROP,EOQ,QOH,QOO,QRCode,QRCodeTxt)VALUES ('1x35',4,'iPhone 14 Pro Max',249.99,099.99,1,20,40,0,'','');
+INSERT INTO Product (Id,VendorId,Name,CostPrice,MSRP,ROP,EOQ,QOH,QOO,QRCode,QRCodeTxt)VALUES ('1x36',4,'iPhone 14 Pro Max',249.99,099.99,1,20,40,0,'','');

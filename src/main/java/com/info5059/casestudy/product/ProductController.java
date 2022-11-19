@@ -1,6 +1,8 @@
 package com.info5059.casestudy.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -50,5 +52,11 @@ public class ProductController {
     final HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.IMAGE_PNG);
     return new ResponseEntity<byte[]>(qrcodebin, headers, HttpStatus.CREATED);
+  }
+
+  @GetMapping(value = "/api/products/paged", params = {"p", "s"})
+  public Page<Product> findPaginated(@RequestParam("p") int page, @RequestParam("s") int size) {
+      Page<Product> resultPage = productRepository.findAll(PageRequest.of(page, size));
+      return resultPage;
   }
 }
