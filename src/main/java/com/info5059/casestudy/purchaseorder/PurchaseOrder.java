@@ -28,4 +28,6 @@ public class PurchaseOrder {
     private LocalDateTime podate;
     @OneToMany(mappedBy = "poid", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PurchaseOrderLineitem> items = new ArrayList<PurchaseOrderLineitem>();
+    @JsonFormat(pattern="yyyy-MM-dd@HH:mm:ss")
+    private LocalDateTime datecreated; 
 }

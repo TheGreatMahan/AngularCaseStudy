@@ -26,6 +26,7 @@ public class PurchaseOrderDAO {
         realPurchaseOrder.setVendorid(clientrep.getVendorid());
         realPurchaseOrder.setAmount(clientrep.getAmount());
         realPurchaseOrder.setPodate(LocalDateTime.now());
+        realPurchaseOrder.setDatecreated(LocalDateTime.now());
         entityManager.persist(realPurchaseOrder);
         for (PurchaseOrderLineitem item : clientrep.getItems()) {
             PurchaseOrderLineitem realItem = new PurchaseOrderLineitem();
