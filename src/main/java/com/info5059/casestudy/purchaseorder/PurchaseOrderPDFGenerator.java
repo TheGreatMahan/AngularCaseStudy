@@ -2,6 +2,7 @@ package com.info5059.casestudy.purchaseorder;
 
 import com.info5059.casestudy.product.Product;
 import com.info5059.casestudy.product.ProductRepository;
+import com.info5059.casestudy.product.QRCodeGenerator;
 import com.info5059.casestudy.vendor.Vendor;
 import com.info5059.casestudy.vendor.VendorRepository;
 import com.itextpdf.io.font.constants.StandardFonts;
@@ -74,7 +75,8 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
                                 Optional<Vendor> optVendor = vendorRepository.findById(purchaseOrder.getVendorid());
                                 if (optVendor.isPresent()) {
                                         Vendor vendor = optVendor.get();
-
+                                        Image qrcode = addSummaryQRCode(vendor, purchaseOrder);
+                                        document.add(qrcode);
                                         Table vendorInfoTable = new Table(2);
                                         vendorInfoTable.setWidth(new UnitValue(UnitValue.PERCENT, 30));
                                         vendorInfoTable.setMarginTop(20);
@@ -271,5 +273,22 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
                 }
 
                 return new ByteArrayInputStream(baos.toByteArray());
+        }
+
+        private static Image addSummaryQRCode(Vendor ven, PurchaseOrder po){
+                QRCodeGenerator qrCodeGenerator = new QRCodeGenerator();
+                Locale locale = new Locale("en", "US");
+                NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm a");
+                byte[] qrcodebin = qrCodeGenerator.generateQRCode(
+                        "Summary for Purchase Order:" + po.getId() + "\nDate:"
+                        + dateFormatter.format(po.getPodate()) + "\nVendor:"
+                        + ven.getName()
+                        + "\nTotal:" + formatter.format(po.getAmount()));
+
+        
+                return new Image(ImageDataFactory.create(qrcodebin))
+                        .scaleAbsolute(100, 100)
+                        .setFixedPosition(460, 60);
         }
 }
