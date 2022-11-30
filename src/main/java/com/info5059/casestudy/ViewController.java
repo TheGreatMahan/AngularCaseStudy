@@ -1,4 +1,4 @@
-package com.info5059.exercises;
+package com.info5059.casestudy;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
